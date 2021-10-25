@@ -1,0 +1,9 @@
+undo first commit :
+git update-ref -d HEAD
+
+
+undo a commit :
+git reset --soft HEAD~1
+
+undo an add :
+git reset
