@@ -1,18 +1,23 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io"
+	"os"
 	"strings"
 
+	bufferedstreams "github.com/souben/streams_buffers/buffered_streams"
+	datatransfer "github.com/souben/streams_buffers/data_transfer"
 	"github.com/souben/streams_buffers/readers"
+	standardiostreams "github.com/souben/streams_buffers/standard_io_streams"
 	"github.com/souben/streams_buffers/writers"
 )
 
 func main() {
 
+	fmt.Println(" ----- Stream Readers------")
 	strData := readers.NewStringData("streams and buffers")
-
 	p := make([]byte, 3)
 	for {
 		n, err := strData.Read(p)
@@ -39,6 +44,8 @@ func main() {
 			break
 		}
 	}
+
+	fmt.Println(" ----- Stream Writers------")
 
 	strStore := make([]byte, 0)
 	simpleStore := writers.NewSampleStore(strStore)
@@ -69,4 +76,26 @@ func main() {
 	n, err = io.WriteString(anotherStore, str)
 	fmt.Printf("wrote n bytes: %d, data in 2 store: %s, err: %v\n", n, anotherStore.GetDataFromStore(), err)
 
+	fmt.Println(" ----- Standard IO Streams ------")
+
+	standardiostreams.StandardIoExamples()
+	datatransfer.CopyExample()
+
+	datatransfer.PipeExample()
+
+	bufferedstreams.BufferStreamsExample()
+
+	// create a buffered `io.Writer` from `Stdout`
+	dst := bufio.NewWriter(os.Stdout)
+
+	// write some data to the buffer
+	fmt.Println(dst.WriteString("Hello World!"))
+	fmt.Println(dst.Write([]byte(" How are you?\n")))
+
+	// write buffered data to underlying `io.Writer`
+	fmt.Println(dst.Flush(), "Flushed!")
+
+	// write some more data to the buffer
+	fmt.Println(dst.WriteString("Gooood?\n"))
+	fmt.Println(dst.Flush(), "Flushed!")
 }

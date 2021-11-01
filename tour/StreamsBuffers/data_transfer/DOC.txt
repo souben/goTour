@@ -1,0 +1,2 @@
+Unlike io.Copy, data is copied from the Write call 
+directly to the Read call without any internal buffering.
