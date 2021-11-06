@@ -6,7 +6,7 @@ var subset []int
 
 func GenereteSubset(c []int, k int) {
 	if k == len(c) {
-		fmt.Printf("subset : %v ::", subset)
+		fmt.Printf("subset : %v\n", subset)
 	} else {
 		//fmt.Println(k, &subset)
 		GenereteSubset(c, k+1)

@@ -1,0 +1,6 @@
+
+
+https://graphics.stanford.edu/~seander/bithacks.html
+
+source: https://medium.com/learning-the-go-programming-language/bit-hacking-with-go-e0acee258827
+Credits to Vladimir Vivien.

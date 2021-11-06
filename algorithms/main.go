@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	bitmask "github.com/souben/algorithms/bit_mask"
 	completesearch "github.com/souben/algorithms/complete_search"
 	quicksorting "github.com/souben/algorithms/quick_sorting"
 )
@@ -19,4 +20,6 @@ func main() {
 	c := []int{1, 2, 3}
 	k := 0
 	completesearch.GenereteSubset(c, k)
+
+	bitmask.CombineAndOr()
 }
