@@ -22,4 +22,15 @@ func main() {
 	completesearch.GenereteSubset(c, k)
 
 	bitmask.CombineAndOr()
+
+	fmt.Printf("%04b\n", 0<<1|0x2)
+
+	allsubsets := completesearch.GenereteSubsetsPrinter(0, 2)
+	fmt.Println(allsubsets)
+
+	fmt.Println("-----")
+
+	allsubsets = completesearch.GenereteSubsetVTwo(3)
+	fmt.Println(allsubsets)
+
 }

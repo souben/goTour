@@ -17,3 +17,24 @@ func GenereteSubset(c []int, k int) {
 	}
 
 }
+
+var allsubsets [][]int
+
+func GenereteSubsets(k int, n int) {
+	if k == n {
+		subsetCopy := make([]int, n)
+		nbytes := copy(subsetCopy, subset)
+		allsubsets = append(allsubsets, subsetCopy[:nbytes])
+	} else {
+		subset = append(subset, k)
+		GenereteSubsets(k+1, n)
+		subset = subset[:len(subset)-1]
+		GenereteSubsets(k+1, n)
+	}
+}
+
+func GenereteSubsetsPrinter(k int, n int) [][]int {
+	subset = []int{}
+	GenereteSubsets(k, n)
+	return allsubsets
+}
